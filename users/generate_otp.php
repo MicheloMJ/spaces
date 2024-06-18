@@ -1,14 +1,14 @@
 <?php
-
+// ! DO NOT DELETE
 require "../dbconn.php";
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['otp'])) {
-        // Validate OTP
+        // * Get OTP
         $input_otp = filter_var($_POST['otp'], FILTER_SANITIZE_NUMBER_INT);
         if ($input_otp == $_SESSION['otp']) {
-            // OTP is correct, insert user data into the database
+            // Todo: Sanitize the content
             $email = $_SESSION['email'];
             $first_name = $_SESSION['first_name'];
             $last_name = $_SESSION['last_name'];
