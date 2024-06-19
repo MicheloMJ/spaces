@@ -54,15 +54,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         .login-container {
-            max-width: 400px;
-            position: relative;
-            z-index: 2;
-            background-color: white; 
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
-            color: black; /* Set text color to black */
-        }
+    max-width: 300px; /* Make the container narrower */
+    height: 400px; /* Make the container longer */
+    position: relative;
+    z-index: 2;
+    background-color: white; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    color: black; /* Set text color to black */
+}
 
         .login-container input[type="email"],
         .login-container input[type="password"] {
