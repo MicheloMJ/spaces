@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         .login-container {
     max-width: 300px; /* Make the container narrower */
-    height: 400px; /* Make the container longer */
+    height: 350px; /* Make the container longer */
     position: relative;
     z-index: 2;
     background-color: white; 
@@ -87,13 +87,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             background-color: black; /* Dodger blue */
             border-color: black; /* Dodger blue */
             color: black; /* Black */
-            padding: 12px 24px;
-            font-size: 16px;
+            padding: 8px 16px;
+            font-size: 12px;
             color: #fff;
         }
 
         .login-container button[type="submit"]:hover {
-            background-color: #000; /* Darker Dodger blue */
+            background-color: dodgerblue; /* Darker Dodger blue */
             /* border-color: #fff; Darker Dodger blue */
             transition: ease-in-out .4s;
             cursor: pointer;
