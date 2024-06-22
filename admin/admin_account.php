@@ -4,6 +4,16 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 session_start();
 
+// session_start(); // Start the session
+
+// Assuming the user's email is stored in the session
+$user_email = isset($_SESSION['email']) ? $_SESSION['email'] : null;
+
+// If the email is not set, display a generic message
+$welcome_message = $user_email ? "Welcome, $user_email" : "Welcome";
+
+// You can add more links or options as needed
+
 // Check if the user is logged in as admin
 if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
@@ -28,6 +38,7 @@ $stmt_space_name->close();
 if (isset($_POST['action']) && $_POST['action'] == 'approve') {
     $user_id = $_POST['user_id'];
     $space_id = $_POST['space_id'];
+    
 
     // Perform the logic to approve the request (e.g., update user_spaces table)
     $sql = "UPDATE user_spaces SET approved = 1 WHERE user_id = ? AND space_id = ?";
@@ -115,7 +126,7 @@ $result = $stmt->get_result();
         th {
             background-color: #f2f2f2;
             text-align: left;
-            font-weight: bold;
+            font-ight: bold;
         }
 
         .approve-btn,
@@ -164,8 +175,80 @@ $result = $stmt->get_result();
 </head>
 
 <body>
-    <?php require "navbar.php";?>
-    <div class="container">
+
+
+<style>
+    /* Basic styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li a:hover {
+    background-color: #f0f0f0;
+}
+
+.nav-icon {
+    margin-right: 5px;
+}
+
+/* Responsive styling */
+@media only screen and (max-width: 600px) {
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    nav ul li:last-child {
+        margin-bottom: 0;
+    }
+}
+
+</style>
+
+<nav class="navbar navbar-light">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><?php echo $welcome_message; ?></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-pencil nav-icon"></i>Edit Tags</a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-gear nav-icon"></i>Settings</a></li>
+        <li class="nav-item"><a class="nav-link" href="logout.php"><i class="bi bi-box-arrow-right nav-icon"></i>Logout</a></li>
+    </ul>
+</nav>
+
+<div class="container">
         <h1><?php echo "$space_name Admin"; ?></h1>
         <h4>Requests to Join my Spaces</h4>
         <div id="alert-container"></div>

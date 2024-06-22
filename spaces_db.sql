@@ -55,3 +55,7 @@ CREATE TABLE admins (
 
 
 ALTER TABLE admins ADD COLUMN email VARCHAR(255) NOT NULL UNIQUE;
+
+INSERT INTO admins (username, password, space_id, created_at, email) VALUES
+('Mwazipeza Sakala', '123', 10, '2024-06-22 14:27:44', 'admin@ictaz.org.zm'),
+('J Michelo', '123', 6, '2024-06-22 14:27:44', 'admin@chau.ac.zm');

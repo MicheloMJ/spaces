@@ -23,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($password === $user['password']) { // Assuming password is not hashed
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['space_id'] = $user['space_id']; // Set space_id in session
+            $_SESSION['email'] = $user['email']; // Set user's email in session
             header("Location: admin_account.php");
             exit;
         } else {
