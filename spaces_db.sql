@@ -24,3 +24,21 @@ INSERT INTO spaces (name, description) VALUES
 ('Healthcare Innovations Ltd.', 'Developing cutting-edge medical technologies and solutions.'),
 ('Green Energy Co.', 'Promoting sustainable energy solutions for a greener future.'),
 ('Creative Design Studios', 'Offering creative design services for branding and advertising.');
+
+INSERT INTO spaces (name, description) VALUES
+('Chalimbana University', 'A renowned educational institution specializing in various fields of study.'),
+('Innovative Dynamics', 'A cutting-edge technology company focused on innovation and creativity.'),
+('Probase Inc', 'A leading provider of software solutions and IT services for businesses.'),
+('BongoHive', 'An innovation and technology hub supporting entrepreneurs and startups.'),
+('ICTAZ', 'ICT Association of Zambia, promoting ICT development and innovation in Zambia.');
+
+
+CREATE TABLE user_spaces (
+    user_id INT NOT NULL,
+    space_id INT NOT NULL,
+    PRIMARY KEY (user_id, space_id),
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (space_id) REFERENCES spaces(id)
+);
+
+ALTER TABLE user_spaces ADD COLUMN request_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
